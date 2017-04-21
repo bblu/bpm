@@ -1,0 +1,26 @@
+{
+  "name": "bpm",
+  "version": "1.0.0",
+  "description": "business flow website",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bblu/bpm.git"
+  },
+  "keywords": [
+    "bpm"
+  ],
+  "author": "bblu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bblu/bpm/issues"
+  },
+  "homepage": "https://github.com/bblu/bpm#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "hbs": "^4.0.1"
+  }
+}
