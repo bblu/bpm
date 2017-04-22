@@ -5,9 +5,12 @@ hbs.registerPartials(__dirname + '/views/partials');
 var app = express();
 //if use 80 port maybe unhandled error event.js 160
 app.set('port',process.env.PORT || 3000);
-app.set('view engine','html');
+app.set('view engine','hbs');
+//app.set('views',__dirname + '/views');
 app.engine('html',require('hbs').__express);
 
+
+app.use(express.static(__dirname + '/public'));
 app.get('/',function(req,res){
     res.render('home',{fortune:"fortune"});
 });
