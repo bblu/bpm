@@ -37,7 +37,7 @@ router.get('/user',function(req,res){
     res.send('user:bblu');
 });
 
-users(router);
+router.use('/users', users);
 
 router.get('/about',function(req,res){
     res.render('about',{fortune:"fortune"});
