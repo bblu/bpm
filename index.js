@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var roots = require('./routes');
+var roots = require('./routes/root.js');
+//var users = require('./routes/user.js');
 var morgan = require('morgan');
 
 var favicon = require('serve-favicon');
@@ -28,10 +29,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(morgan('tiny')); // type = tiny|combined
 
-//app.get('/',function(req,res){
-//    res.render('index',{title:"index", body:'home', author:'bblu'});
-//});
-//router.use('/users', users);
 
 app.use(roots);
 app.get('/about',function(req,res){

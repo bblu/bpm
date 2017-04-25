@@ -2,10 +2,14 @@
 <html>
     <head>
         <title>{{title}}</title>
-        <link rel="stylesheet" type="text/css" href="/style.css">
+        {{> header}}
     </head>
+    <h2>layout.hbs</h2>
     <body>
-        {{body}}
+    <div class="wrapper">
+        {{{body}}}
+    </div>
+    {{> footer}}
     </body>
 </html>
 

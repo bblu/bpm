@@ -7,6 +7,9 @@ router.use(function timeLog(req, res, next){
     next();
 });
 
+router.get('/index', function(req, res){
+    res.render('users/index',{title:'users',author:'bblu'});
+});
 router.get('/', function(req, res){
     res.send('get users');
 });
