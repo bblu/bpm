@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 router.use(function timeLog(req, res, next){
-    console.log('time:', Date.now());
+    console.log('user time:', Date.now());
     next();
 });
 

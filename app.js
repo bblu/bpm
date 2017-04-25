@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var users = require('./routes/user.js');
+var roots = require('./routes/root.js');
+//var users = require('./routes/user.js');
 var morgan = require('morgan');
 
 var favicon = require('serve-favicon');
@@ -28,18 +29,13 @@ app.use(express.static(__dirname + '/public'));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(morgan('tiny')); // type = tiny|combined
 
-app.get('/',function(req,res){
-    res.render('index',{title:"index", body:'home', author:'bblu'});
-});
+//app.get('/',function(req,res){
+//    res.render('index',{title:"index", body:'home', author:'bblu'});
+//});
+//router.use('/users', users);
 
-
-router.get('/user',function(req,res){
-    res.send('user:bblu');
-});
-
-router.use('/users', users);
-
-router.get('/about',function(req,res){
+app.use(roots);
+app.get('/about',function(req,res){
     res.render('about',{fortune:"fortune"});
 });
 
@@ -49,7 +45,6 @@ router.use(function(req, res){
     res.send('404 - Not Found');
 });
 
-app.use('/', router);
 app.listen(app.get('port'), function(){
     console.log('Express started at ' + app.get('port'));
 });
