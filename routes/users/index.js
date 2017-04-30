@@ -11,7 +11,10 @@ router.use(function timeLog(req, res, next){
 router.get('/index', function(req, res){
     res.render('users/index',{title:'users',author:'bblu'});
 });
+
 router.get('/', control.list);
+
+router.post('/',control.create);
 
 router.get('/:uid/name', function(req, res){
     var uid = req.params.uid;

@@ -13,4 +13,13 @@ exports.list = function(req, res){
     });
 };
 
+exports.create = function(req, res){
+    console.log('control.create');
+    var account = req.body.account;
+    var name = req.body.name;
+    console.log(account +':' + name);
+    model.create(account,name,res,function(err){
+        console.log('create error:' + err);
+    });
+};
 
