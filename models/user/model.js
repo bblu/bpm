@@ -11,16 +11,19 @@ var User = db.model('users', UserSchema);
 //async function list(){
 //    return  await User.find({});
 //}
-exports.list = function(res, callback){
+exports.list = function(){
     console.log('model.list');
-    User.find({},function(err,users){
-        if(err){
-            callback(err);
-        }else{
-            console.log('user.findAll');
-            res.json(users);
-        }
+    var p = new Promise(function(res,rej){
+        User.find({},function(err,users){
+            if(err){
+                rej(err);
+            }else{
+                console.log('user.findAll');
+                res(users);
+            }
+        });
     });
+
 };
 
 exports.create = function(account,name,res,callback){

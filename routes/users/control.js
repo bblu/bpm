@@ -6,7 +6,7 @@ exports.list = function(req, res){
     console.log('control.list');
     //var users = model.list();
     //res.send(users);
-    model.list(res,function(err){
+    model.list().then(err,user){
         if(err){
             console.log('model.list error!');
         }
