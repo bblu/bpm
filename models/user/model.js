@@ -30,7 +30,7 @@ exports.create = function(account,name,res,callback){
     userObj.name = name;
     var user = new User(userObj);
     user.save(function(err,doc){
-        if(err !! !doc){
+        if(err || !doc){
             throw 'Error';
         }else{
             res.json(doc);
