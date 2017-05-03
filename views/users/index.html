@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>服务测试页面</title>
+    <link rel="stylesheet" href="index.css"/>
+
+</head>
+<body>
+<div class="header">服务测试页面</div>
+<div class="section">
+    <div id="severIp">
+        <span>IP地址:</span>
+        <input id="IP" type="text" placeholder="请输入IP地址" value ="http://192.168.111.10:9527/"/>
+    </div>
+    <div id="server1" class="container">
+        <div>服务名称</div>
+        <a id="btn1" class="btn" href="#">测试按钮</a>
+        <ul class="serverTest">
+            <li>
+                <span>URL:</span>
+                <input type="text" id="url1" placeholder="请输入URL" value="appServer/add?token=asdfadsfadfs-adsf-adsf"/>
+            </li>
+            <li>
+                <span>请求方式:</span>
+                <select id="method1">
+                    <option value="get">GET</option>
+                    <option value="post" selected>POST</option>
+                    <option value="delete">DELETE</option>
+                    <option value="put">PUT</option>
+                </select>
+            </li>
+            <li>
+                <span>BODY:</span>
+                <textarea  id="body1" placeHolder="请输入内容" cols="50" rows="5">
+                    {"content":"{\"isSending\":false,\"name\":\"张勇1\",\"phone\":\"13901074442\",\"groups\":\"白山热力测试\"}"}
+                </textarea>
+            </li>
+            <li>
+                <span>返回结果:</span>
+                <textarea id="result1" cols="50" rows="5" >
+
+                </textarea>
+            </li>
+        </ul>
+    </div>
+    <div id="server2" class="container">
+        <div>服务名称</div>
+        <a id="btn2" class="btn" href="#">测试按钮</a>
+        <ul class="serverTest">
+            <li>
+                <span>URL:</span>
+                <input type="text" id="url2" placeholder="请输入URL"/>
+            </li>
+            <li>
+                <span>请求方式:</span>
+                <select id="method2">
+                    <option value="get">GET</option>
+                    <option value="post">POST</option>
+                    <option value="delete">DELETE</option>
+                    <option value="put">PUT</option>
+                </select>
+            </li>
+            <li>
+                <span>BODY:</span>
+                <textarea name="" id="body2" placeHolder="请输入内容" cols="50" rows="8">
+                {"content":"{\"isSending\":false,\"name\":\"张勇1\",\"phone\":\"13901074442\",\"groups\":\"白山热力测试\"}"}
+                </textarea>
+            </li>
+            <li>
+                <span>返回结果:</span>
+                <textarea name="" id="result2" cols="50" rows="8" readonly></textarea>
+            </li>
+        </ul>
+    </div>
+    <div id="server3" class="container">
+        <div>服务名称</div>
+        <a id="btn3" class="btn" href="#">测试按钮</a>
+        <ul class="serverTest">
+            <li>
+                <span>URL:</span>
+                <input type="text" id="url3" placeholder="请输入URL" value=""/>
+            </li>
+            <li>
+                <span>请求方式:</span>
+                <select id="method3">
+                    <option value="get">GET</option>
+                    <option value="post">POST</option>
+                    <option value="delete" selected>DELETE</option>
+                    <option value="put">PUT</option>
+                </select>
+            </li>
+            <li>
+                <span>BODY:</span>
+                <textarea name="" id="body3" placeHolder="请输入内容" cols="50" rows="8"> </textarea>
+            </li>
+            <li>
+                <span>返回结果:</span>
+                <textarea name="" id="result3" cols="50" rows="8" readonly></textarea>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="jquery-1.11.0.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

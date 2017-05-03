@@ -11,10 +11,13 @@ var router = express.Router();
 //    next();
 //});
 
-router.get('/hw',function(req,res){
+router.get('/index',function(req,res){
     res.render('index',{title:"index", body:'home', author:'bblu'});
 }); 
 
+router.get('/about',function(req,res){
+    res.render('about',{title:"about", body:'home', author:'bblu'});
+}); 
 router.use('/users/', users);
 //router.use('/group/', group);
 
