@@ -2,17 +2,32 @@
 var model = require('../../models/user/model.js');
 
 //Json api for list of users
-exports.list = function(req, res){
+var listWithoutPromise = function(req, res){
+    console.log('control.list without promise');
+    var users = model.listWithoutPromise(res);
+    //if(err){ console.log('model.list error!'); }
+};
+
+var listWtihPromise = function(req, res){
     console.log('control.list');
-    //var users = model.list();
-    //res.send(users);
-    model.list().then(err,user){
+    model.listWithPromise().then(function(users){
+        res.json(users); 
+    }).catch(function(err){
         if(err){
             console.log('model.list error!');
         }
-    });
+    })
 };
-
+var sw = true;
+exports.list = function(req, res){
+    if(sw){
+        listWtihPromise(req,res);
+    }else{
+        listWithoutPromise(req,res);
+    }
+    sw=!sw;
+}
+// add user
 exports.create = function(req, res){
     console.log('control.create');
     var account = req.body.account;
