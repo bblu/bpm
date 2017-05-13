@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var db;
 
-db = mongoose.createConnection('localhost', 'pbm');
+db = mongoose.createConnection('localhost', 'bpm');
 
 //Get user schema and model
 var UserSchema = require('./schema.js').UserSchema;
