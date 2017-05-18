@@ -1,7 +1,11 @@
+//module dependencies by bblu @ 2017
+
+var path = require('path');
 var express = require('express');
 var router = express.Router();
 var roots = require('./routes');
 var morgan = require('morgan');
+var bodyParser = require('body-parser');
 
 var favicon = require('serve-favicon');
 var hbs = require('hbs');
@@ -24,10 +28,13 @@ app.set('view engine','hbs');
 app.set('views',__dirname + '/views');
 app.engine('html',require('hbs').__express);
 
-app.use(express.static(__dirname + '/public'));
+var staticDir = path.join(__dirname, 'public');
+app.use('/public', express.static(staticDir));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(morgan('tiny')); // type = tiny|combined
-
+app.use(require('response-time')());
+app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '1mb' }));
 //app.get('/',function(req,res){
 //    res.render('index',{title:"index", body:'home', author:'bblu'});
 //});

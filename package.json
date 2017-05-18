@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/bblu/bpm#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "hbs": "^4.0.1",
     "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
+    "response-time": "^2.3.2",
     "serve-favicon": "^2.4.2",
     "sqlite3": "^3.1.8"
   }
