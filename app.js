@@ -1,12 +1,14 @@
 //module dependencies by bblu @ 2017
 
+var config = require('./config');
+
 var path = require('path');
 var express = require('express');
 var router = express.Router();
 var roots = require('./routes');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-
+//var logger = require('./lib/logger');
 var favicon = require('serve-favicon');
 var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -45,12 +47,28 @@ app.get('/about',function(req,res){
     res.render('about',{fortune:"fortune"});
 });
 
+//error handler
+if(config.debug){
+    //app.use(errorHandler());
+} else {
+    app.use(function(err, req, res, next){
+        if(typeof logger == 'object')logger.error(err);
+        return res.status(500).send('500 status');
+    });
+}
 router.use(function(req, res){
     res.type('text/plain');
     res.status(404);
     res.send('404 - Not Found');
 });
 
-app.listen(app.get('port'), function(){
-    console.log('Express started at ' + app.get('port'));
-});
+if(!module.parent){
+    app.listen(config.port, function(){
+        if(typeof logger == 'object'){
+            logger.info('bpm listening on port', config.port);
+            logger.info('you can debug your site at http://' + config.hostname + ':' + config.port);
+        }else{
+            console.log('bpm started at ' + app.get('port'));
+        }
+    });
+}

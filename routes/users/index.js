@@ -1,18 +1,24 @@
 
 var express = require('express');
 var control = require('./control.js');
+var userModel = require('../../models/user/model.js');
 var router = express.Router();
 
 router.use(function timeLog(req, res, next){
-    console.log('user time:', Date.now());
+    console.log('user time:', Date.now().toString());
     next();
 });
 
 router.get('/index', function(req, res){
-    res.render('users/index',{title:'users',author:'bblu'});
+    control.listWithPromise()
+        .then(function(users){
+            console.log(users);
+            res.render('users/index',{title:'UserPage', author:'bblu', users:users});
+    });
 });
 
-router.get('/', control.list);
+router.get('/callback', control.listWithCallback);
+router.get('/promise', control.listWithPromise);
 
 router.post('/',control.create);
 

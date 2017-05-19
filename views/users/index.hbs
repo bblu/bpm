@@ -5,3 +5,11 @@
 <h1>Demo by {{author}}</h1>
 
 <p>{{author}}: welcome to homepage for bpm!</p>
+
+<ul>
+    {{#each users}}
+        <li>
+            account:{{account}}
+            {{id}}-{{name}}
+    {{/each}}
+</ul>

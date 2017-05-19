@@ -1,29 +1,40 @@
 //
-var model = require('../../models/user/model.js');
+var userModel = require('../../models/user/model.js');
 
 //Json api for list of users
-var listWithoutPromise = function(req, res){
-    console.log('control.list without promise');
-    var users = model.listWithoutPromise(res);
-    //if(err){ console.log('model.list error!'); }
+exports.listWithCallback = function(req, res, next){
+    console.log('control.list users with callback');
+    userModel.listWithCallback(function(err, users){
+        if(err){ 
+            console.log('model.list error!'); 
+            return next(err);
+        }
+        res.json(users);
+    });
 };
 
-var listWtihPromise = function(req, res){
-    console.log('control.list');
-    model.listWithPromise().then(function(users){
-        res.json(users); 
-    }).catch(function(err){
-        if(err){
-            console.log('model.list error!');
-        }
-    })
-};
-var sw = true;
-exports.list = function(req, res){
+exports.listWithPromise = function(){
+    console.log('control.list users with promise');
+    //return new Promise(function(resolve,reject){
+    return userModel.listWithPromise();
+        //.then(function(users){
+        //    resolve(users); 
+        //})
+        //.catch(function(err){
+        //    if(err){
+        //        console.log('model.list error!');
+        //    }
+        //})
+    //});
+}
+
+var sw = false;
+exports.list = function(req, res, next){
+
     if(sw){
-        listWtihPromise(req,res);
+        return listWithPromise();
     }else{
-        listWithoutPromise(req,res);
+        listWithCallback(req, res, next);
     }
     sw=!sw;
 }
