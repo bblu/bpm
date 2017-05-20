@@ -17,8 +17,7 @@ router.get('/index', function(req, res){
     });
 });
 
-router.get('/callback', control.listWithCallback);
-router.get('/promise', control.listWithPromise);
+router.get('/', control.list);
 
 router.post('/',control.create);
 

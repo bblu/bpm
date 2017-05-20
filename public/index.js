@@ -8,7 +8,8 @@ $(function(){
         var url=IP+$('#url'+num).val();
         var method=$('#method'+num).val();
         try {
-            var body = $('#body' + num).val() ? JSON.parse($('#body' + num).val()) : $('#body' + num).val();
+            var bod = $('#body' + num).val() ? JSON.parse($('#body' + num).val()) : $('#body' + num).val();
+            var body = $('#body' + num).val();
             if(url && method) {
                 $.ajax({
                     type: method,

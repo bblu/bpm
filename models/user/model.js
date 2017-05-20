@@ -45,13 +45,14 @@ exports.listWithPromise = function(){
 
 exports.create = function(account,name,res,callback){
     var userObj={};
-    userObj.id = 1003;
+    userObj.id = 1004;
     userObj.account = account;
     userObj.name = name;
+    //userObj.ts = Date();
     var user = new User(userObj);
     user.save(function(err,doc){
         if(err || !doc){
-            throw 'Error';
+            throw err;
         }else{
             res.json(doc);
         }
