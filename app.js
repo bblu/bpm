@@ -1,14 +1,17 @@
 //module dependencies by bblu @ 2017
 
 var config = require('./config');
-
+var colors = require('colors');
 var path = require('path');
 var express = require('express');
 var router = express.Router();
 var roots = require('./routes');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-//var logger = require('./lib/logger');
+var logger = require('./lib/logger');
+var errorHandler = require('errorhandler');
+require('./lib/mongoose_log');
+var requestLog = require('./lib/request_log');
 var favicon = require('serve-favicon');
 var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -25,10 +28,15 @@ hbs.registerHelper('extend', function(name, context) {
 
 var app = express();
 //if use 80 port maybe unhandled error event.js 160
-app.set('port',process.env.PORT || 3000);
+//app.set('port',process.env.PORT || 3000);
 app.set('view engine','hbs');
 app.set('views',__dirname + '/views');
 app.engine('html',require('hbs').__express);
+
+//request logger
+//if(config.debug){
+    app.use(requestLog);
+//}
 
 var staticDir = path.join(__dirname, 'public');
 app.use('/public', express.static(staticDir));
@@ -49,13 +57,14 @@ app.get('/about',function(req,res){
 
 //error handler
 if(config.debug){
-    //app.use(errorHandler());
+    app.use(errorHandler());
 } else {
     app.use(function(err, req, res, next){
-        if(typeof logger == 'object')logger.error(err);
+        logger.error(err);
         return res.status(500).send('500 status');
     });
 }
+
 router.use(function(req, res){
     res.type('text/plain');
     res.status(404);
@@ -64,11 +73,7 @@ router.use(function(req, res){
 
 if(!module.parent){
     app.listen(config.port, function(){
-        if(typeof logger == 'object'){
-            logger.info('bpm listening on port', config.port);
-            logger.info('you can debug your site at http://' + config.hostname + ':' + config.port);
-        }else{
-            console.log('bpm started at ' + app.get('port'));
-        }
+        logger.info('bpm listening on port'.green, config.port.toString().green);
+        logger.info('you can debug your site at http://'.green + config.host.green + ':'.yellow + config.port.toString().green);
     });
 }

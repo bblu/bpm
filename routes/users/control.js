@@ -1,12 +1,12 @@
 //
+var logger = require('../../lib/logger');
 var userModel = require('../../models/user/model.js');
 
 //Json api for list of users
 var sw = true;
 exports.list = function(req, res, next){
-
     if(sw){
-        console.log('control.list users with promise');
+        logger.debug('control.list users with promise');
         userModel.listWithPromise()
         .then(function(users){
             res.json({users:users});
@@ -16,7 +16,7 @@ exports.list = function(req, res, next){
             res.send(err);// what's the different from next(err)
         });
     }else{
-        console.log('control.list users with callback');
+        logger.debug('control.list users with callback');
         userModel.listWithCallback(function(err, users){
         if(err){ 
             console.log('model.list error!'); 
@@ -37,4 +37,8 @@ exports.create = function(req, res){
         console.log('create error:' + err);
     });
 };
+// find user by id
+exports.findById = function(uid){
+    logger.debug('find by id' + uid);
 
+};

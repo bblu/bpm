@@ -14,7 +14,7 @@
         <input id="IP" type="text" placeholder="请输入IP地址" value ="http://localhost:3000"/>
     </div>
     <div id="server1" class="container">
-        <div>服务名称</div>
+        <div>添加服务</div>
         <a id="btn1" class="btn" href="#">测试按钮</a>
         <ul class="serverTest">
             <li>
@@ -26,13 +26,11 @@
                 <select id="method1">
                     <option value="get">GET</option>
                     <option value="post" selected>POST</option>
-                    <option value="delete">DELETE</option>
-                    <option value="put">PUT</option>
                 </select>
             </li>
             <li>
                 <span>BODY:</span>
-                <textarea  id="body1" placeHolder="请输入内容" cols="50" rows="5">{"account":"user3","name":"用户3"}</textarea>
+                <textarea  id="body1" placeHolder="请输入内容" cols="50" rows="5">{"id":1006,account":"user6","name":"用户6"}</textarea>
             </li>
             <li>
                 <span>返回结果:</span>
@@ -43,18 +41,17 @@
         </ul>
     </div>
     <div id="server2" class="container">
-        <div>服务名称</div>
-        <a id="btn2" class="btn" href="#">测试按钮</a>
+        <div>查询和删除服务</div>
+        <a id="btn2" class="btn" href="#">测试</a>
         <ul class="serverTest">
             <li>
                 <span>URL:</span>
-                <input type="text" id="url2" placeholder="请输入URL"/>
+                <input type="text" id="url2" placeholder="请输入URL" value="/users/1006"/>
             </li>
             <li>
                 <span>请求方式:</span>
                 <select id="method2">
-                    <option value="get">GET</option>
-                    <option value="post">POST</option>
+                    <option value="get" selected>GET</option>
                     <option value="delete">DELETE</option>
                     <option value="put">PUT</option>
                 </select>
@@ -62,7 +59,7 @@
             <li>
                 <span>BODY:</span>
                 <textarea name="" id="body2" placeHolder="请输入内容" cols="50" rows="8">
-                {"content":"{\"isSending\":false,\"name\":\"张勇1\",\"phone\":\"13901074442\",\"groups\":\"白山热力测试\"}"}
+                    {}
                 </textarea>
             </li>
             <li>

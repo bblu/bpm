@@ -22,12 +22,21 @@
   "homepage": "https://github.com/bblu/bpm#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "colors": "^1.1.2",
+    "errorhandler": "^1.5.0",
     "express": "^4.15.2",
     "hbs": "^4.0.1",
+    "log4js": "^1.1.1",
     "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
     "response-time": "^2.3.2",
     "serve-favicon": "^2.4.2",
     "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-nodemon": "^0.4.2"
   }
 }

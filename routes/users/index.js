@@ -1,25 +1,26 @@
 
 var express = require('express');
-var control = require('./control.js');
-var userModel = require('../../models/user/model.js');
+var user = require('./control.js');
 var router = express.Router();
 
-router.use(function timeLog(req, res, next){
-    console.log('user time:', Date.now().toString());
-    next();
-});
+
+//router.use(function timeLog(req, res, next){
+//    console.log('user time:', Date.now().toString());
+//    next();
+//});
 
 router.get('/index', function(req, res){
-    control.listWithPromise()
+    user.listWithPromise()
         .then(function(users){
             console.log(users);
             res.render('users/index',{title:'UserPage', author:'bblu', users:users});
     });
 });
 
-router.get('/', control.list);
+router.get('/', user.list);
+router.post('/',user.create);
 
-router.post('/',control.create);
+router.get('/:uid', user.findById);
 
 router.get('/:uid/name', function(req, res){
     var uid = req.params.uid;
