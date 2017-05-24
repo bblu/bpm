@@ -28,3 +28,6 @@ UserSchema.pre('save', function(next){
     this.last_update = new Date();
     next();
 });
+
+
+exports.UserSchema = UserSchema;
