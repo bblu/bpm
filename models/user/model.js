@@ -28,10 +28,11 @@ exports.listWithCallback = function(callback){
     User.find({}, callback);
 }
 
-exports.listWithPromise = function(){
+exports.listWithPromise = function(filter){
     //console.log('user.model.list before find');
-    var p = new Promise(function(resolve,reject){
-        User.find({},function(err,json){
+    filter = filter || {};
+    return new Promise(function(resolve,reject){
+        User.find(filter,function(err,json){
             if(err){
                 reject(err);
             }else{
@@ -40,9 +41,24 @@ exports.listWithPromise = function(){
             }
         });
     });
-    return p;
 }
 
+exports.findById = function(id){
+    return exports.listWithPromise({id:id});
+}
+
+exports.deleteById = function(id){
+    return new Promise(function(resolve, reject){    
+        User.update({id:id}, {$set: { deleted: true }}, 
+            function(err, res){
+                if(res){
+                    resolve(res);
+                }else if (err){
+                    reject(err);
+                }
+            });
+    });
+};
 exports.create = function(account,name,res,callback){
     var userObj={};
     userObj.id = 1004;

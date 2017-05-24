@@ -38,7 +38,22 @@ exports.create = function(req, res){
     });
 };
 // find user by id
-exports.findById = function(uid){
-    logger.debug('find by id' + uid);
+exports.findById = function(req,res){
+    var uid = req.params.uid;
+    logger.debug('find by id:' + uid);
+    userModel.findById(uid)
+    .then(function (user){
+        res.json(user);
+    });
+};
 
+//delete by id
+exports.deleteById = function(req,res){
+    var uid = req.params.uid;
+    logger.debug('delete by id:' + uid);
+    userModel.deleteById(uid)
+    .then(function (user){
+        res.json(user);
+    });
+    
 };

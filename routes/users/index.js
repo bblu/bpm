@@ -22,6 +22,8 @@ router.post('/',user.create);
 
 router.get('/:uid', user.findById);
 
+router.delete('/:uid', user.deleteById);
+
 router.get('/:uid/name', function(req, res){
     var uid = req.params.uid;
     res.send(uid+': wblu');
