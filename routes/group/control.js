@@ -1,13 +1,13 @@
 //
 var logger = require('../../lib/logger');
-var userModel = require('../../models/user/model.js');
+var groupModel = require('../../models/group/model.js');
 
 //Json api for list of users
 var sw = true;
 exports.list = function(req, res, next){
     if(sw){
         logger.debug('control.list users with promise');
-        userModel.listWithPromise()
+        groupModel.listWithPromise()
         .then(function(users){
             res.json({users:users});
         })
@@ -17,7 +17,7 @@ exports.list = function(req, res, next){
         });
     }else{
         logger.debug('control.list users with callback');
-        userModel.listWithCallback(function(err, users){
+        groupModel.listWithCallback(function(err, users){
         if(err){ 
             console.log('model.list error!'); 
             return next(err);
@@ -33,7 +33,7 @@ exports.create = function(req, res){
     var account = req.body.account;
     var name = req.body.name;
     console.log(account +':' + name);
-    userModel.create(account,name,res,function(err){
+    groupModel.create(account,name,res,function(err){
         console.log('create error:' + err);
     });
 };
@@ -41,7 +41,7 @@ exports.create = function(req, res){
 exports.findById = function(req,res){
     var uid = req.params.uid;
     logger.debug('find by id:' + uid);
-    userModel.findById(uid)
+    groupModel.findById(uid)
     .then(function (user){
         res.json(user);
     });
@@ -51,7 +51,7 @@ exports.findById = function(req,res){
 exports.deleteById = function(req,res){
     var uid = req.params.uid;
     logger.debug('delete by id:' + uid);
-    userModel.deleteById(uid)
+    groupModel.deleteById(uid)
     .then(function (user){
         res.json(user);
     });

@@ -5,34 +5,36 @@ var db;
 db = mongoose.createConnection('localhost', 'bpm');
 
 //Get user schema and model
-var UserSchema = require('./schema.js').UserSchema;
-var User = db.model('users', UserSchema);
+var schema = require('./schema.js');
 
+var Stuff = db.model('stuff', schema.Stuff);
+var Group = db.model('group', schema.Group);
+var Department = db.model('department', schema.Department);
 /**
- * get Users by accounts
+ * get Stuffs by accounts
  * callback:
  * - err,database error
  * - users, user array
  * @param {array} accounts
  * @param {function} callback function
  */
-exports.getUsersByAccounts = function(accounts, callback){
+exports.getStuffsByAccounts = function(accounts, callback){
     if(accounts.length === 0){
         return callback(null, []);
     }
-    User.find({account: { $in: accounts} }, callback);
+    Stuff.find({account: { $in: accounts} }, callback);
 };
 
 exports.listWithCallback = function(callback){
     //console.log('user.model.list before find');
-    User.find({}, callback);
+    Stuff.find({}, callback);
 }
 
 exports.listWithPromise = function(filter){
     //console.log('user.model.list before find');
     filter = filter || {};
     return new Promise(function(resolve,reject){
-        User.find(filter,function(err,json){
+        Stuff.find(filter,function(err,json){
             if(err){
                 reject(err);
             }else{
@@ -49,7 +51,7 @@ exports.findById = function(id){
 
 exports.deleteById = function(id){
     return new Promise(function(resolve, reject){    
-        User.update({id:id}, {$set: { deleted: true }}, 
+        Stuff.update({id:id}, {$set: { deleted: true }}, 
             function(err, res){
                 if(res){
                     resolve(res);
@@ -65,7 +67,7 @@ exports.create = function(account,name,res,callback){
     userObj.account = account;
     userObj.name = name;
     //userObj.ts = Date();
-    var user = new User(userObj);
+    var user = new Stuff(userObj);
     user.save(function(err,doc){
         if(err || !doc){
             throw err;

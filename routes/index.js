@@ -1,8 +1,7 @@
 
 var express = require('express');
-var users = require('./users');
+var group = require('./group');
 
-//var group = require('./group.js');
 
 var router = express.Router();
 //
@@ -18,7 +17,7 @@ router.get('/index',function(req,res){
 router.get('/about',function(req,res){
     res.render('about',{title:"about", body:'home', author:'bblu'});
 }); 
-router.use('/users/', users);
+router.use('/group', group);
 //router.use('/group/', group);
 
 

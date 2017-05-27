@@ -15,8 +15,9 @@ mongoose.connect(config.db, {
 //var db = mongoose.createConnection('localhost', 'bpm');
 
 // models
-require('./user/model');
+require('./group/model');
 
-
-exports.User    = mongoose.model('User');
+exports.Stuff   = mongoose.model('Stuff');
+exports.Group   = mongoose.model('Group');
+exports.Department   = mongoose.model('Department');
 
