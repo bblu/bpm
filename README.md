@@ -1,1 +1,13 @@
 # bpm
+## patrol
+### plan
+      |-name: string
+      |-start: date
+      |-end: date
+      |-schedule: string
+      |-span: int 
+      |-executor: array
+      |-inspector: string
+      |-type: string[region|device]
+      |-content: array
+      |-enable: boolean
