@@ -27,26 +27,26 @@
 ### task modle
     task
      |_id: objectId, taskId
-     |-name: string,planName
-     |-start: datetime,实际执行时间
-     |-end: datetime
+     |-name: string,planName
+     |-start: datetime,实际执行时间
+     |-end: datetime
      |-executor: array
      |-inspector: string
      |-type:string,[task]
      |-content: int, 设备数量
-     |-enable: boolean,是否显示
-     |-deleted: boolean
+     |-enable: boolean,是否显示
+     |-deleted: boolean
 
 ### device check modle
     device check
-     |_id: objectId，checkId
-     |-name: string, 设备名称
+     |_id: objectId，checkId
+     |-name: string, 设备名称
      |-taskId: objectId
-     |-type: string,[check]
-     |-check: string, 检查项名称
-     |-content: string, 检查结果
-     |-start: datetime,实际执行时间
-     |-end: datetime
+     |-type: string,[check]
+     |-check: string, 检查项名称
+     |-content: string, 检查结果
+     |-start: datetime,实际执行时间
+     |-end: datetime
 
 ### attachment modle
     attachment 
