@@ -2,12 +2,12 @@
 ## patrol
 ### plan modle
      plan
-      |_id: objectId
-      |-name: string
+      |_id:objectId
+      |-name:string
       |-start: date, 计划起效日期
       |-end: date, 计划实效日期
       |-schedule: string, 30 9 * * * 1
-      |-span: int 
+      |-span: int
       |-executor: array, stuffIds
       |-inspector: string, stuffId
       |-type: string[region|device]
@@ -15,6 +15,7 @@
       |-content: array,设备ID
       |-enable: boolean，是否启用
       |-deleted: boolean
+
 ### check standard modle
     check
       |_id: objectId
@@ -35,6 +36,7 @@
       |-content: int, 设备数量
       |-enable: boolean,是否显示
       |-deleted: boolean
+
 ### device check modle
     device check
       |_id: objectId，checkId
@@ -45,7 +47,7 @@
       |-content: string, 检查结果
       |-start: datetime,实际执行时间
       |-end: datetime
-      
+
 ### attachment modle
     attachment 
       |_id: objectId
