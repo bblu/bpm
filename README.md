@@ -19,10 +19,10 @@
 ### check standard modle
     check
       |_id: objectId
-      |-type：string,[standard]
+      |-type：string,[standard]
       |-device:int, 设备类型
-      |-name: string,检查项名称
-      |-content: string, 检查内容／标准
+      |-name: string,检查项名称
+      |-content: string, 检查内容／标准
 
 ### task modle
      task
@@ -54,5 +54,6 @@
       |-checkId: objectId
       |-type:string, [attachment]
       |-format:strig, [jpg|mp4|png|...]
-      |-content: buffer,附件内容
+      |-content: buffer,附件内容
+      
       
