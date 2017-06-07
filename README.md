@@ -4,17 +4,17 @@
      plan
       |_id:objectId
       |-name:string
-      |-start: date, 计划起效日期
-      |-end: date, 计划实效日期
-      |-schedule: string, 30 9 * * * 1
+      |-start: date, 计划起效日期
+      |-end: date, 计划实效日
+      |-schedule: string, 30 9 * * * 1
       |-span: int
       |-executor: array, stuffIds
       |-inspector: string, stuffId
       |-type: string[region|device]
-      |-range: array, polygon geometry或者设备类型ID
-      |-content: array,设备ID
-      |-enable: boolean，是否启用
-      |-deleted: boolean
+      |-range: array, polygon geometry或者设备类型ID
+      |-content: array,设备ID
+      |-enable: boolean，是否启用
+      |-deleted: boolean
 
 ### check standard modle
     check
