@@ -1,5 +1,5 @@
 //module dependencies by bblu @ 2017
-
+process.env.NODE_ENV = 'test'
 var config = require('./config');
 var colors = require('colors');
 var path = require('path');
